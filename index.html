@@ -26,7 +26,30 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZRVZ6N8XG8"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-ZRVZ6N8XG8");
+    </script>
+
     <style>
+      html {
+        background: url(./bg_beer_2.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
       html,
       body {
         height: 100%;
@@ -36,6 +59,7 @@
       body {
         margin: 0;
         padding: 0;
+        text-align: center;
       }
 
       .container {
@@ -57,9 +81,22 @@
         align-items: center;
       }
 
+      .introText {
+        height: 7%;
+        text-align: center;
+      }
+
+      .endText {
+        height: 7%;
+        margin-top: 15px;
+      }
+
       .div2 {
         height: 70%;
         border-radius: 25px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: black;
       }
 
       #map {
@@ -86,16 +123,24 @@
       <header>
         <h1>Conil de la Cerveza</h1>
       </header>
-      <div>Descubre los bares en Conil que tienen tu cerveza favorita</div>
+      <section class="introText">
+        Descubre los bares en Conil que tienen tu cerveza favorita
+      </section>
       <div class="div2">
         <div class="divMap">
           <div id="map"></div>
         </div>
       </div>
-      <div>
-        Quieres que tu bar aparezca en ConilDeLaCerveza.es? Contacta con
-        nosotros por e-mail o por Instagram.
-      </div>
+      <section class="endText">
+        ¿Quieres que tu bar aparezca en ConilDeLaCerveza.es? Contacta con
+        nosotros por <a href="mailto: info@conildelacerveza.es">e-mail</a> o por
+        <a
+          href="https://www.instagram.com/conil.de.la.cerveza/"
+          target="blank"
+          rel="noopener noreferrer"
+          >Instagram</a
+        >.
+      </section>
     </div>
 
     <script src="./main.js"></script>

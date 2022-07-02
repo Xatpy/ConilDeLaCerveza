@@ -47,7 +47,7 @@ $.get(file, function (csvString) {
       //map.addLayer(marker);
     }
   }
-  debugger;
+
   let baseGroup = L.layerGroup(allMarkers);
   let groupA = L.layerGroup(markersA);
   let groupB = L.layerGroup(markersB);
