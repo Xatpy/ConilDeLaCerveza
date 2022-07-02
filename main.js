@@ -58,17 +58,25 @@ $.get(file, function (csvString) {
   let groupMahou = L.layerGroup(markersMahou);
   let groupEsparte = L.layerGroup(markersEsparte);
 
-  //map.addLayer(markers);
+  // var OpenStreetMap_Mapnik_tileLayer = L.tileLayer(
+  //   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  //   {
+  //     maxZoom: 19,
+  //     attribution:
+  //       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  //   }
+  // );
+  // var tileLayer = { BaseLayer: OpenStreetMap_Mapnik_tileLayer };
 
-  var OpenStreetMap_Mapnik_tileLayer = L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  var Esri_WorldStreetMap = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
     {
-      maxZoom: 19,
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        "Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012",
     }
   );
-  var tileLayer = { BaseLayer: OpenStreetMap_Mapnik_tileLayer };
+  //controlLayers.addBaseLayer(Esri_WorldStreetMap, "Esri_WorldStreetMap");
+  var tileLayer = { BaseLayer: Esri_WorldStreetMap };
 
   var map = L.map("map", {
     center: [36.3, -6.1],
@@ -76,7 +84,13 @@ $.get(file, function (csvString) {
     minZoom: 11,
     scrollWheelZoom: true,
     tap: false,
-    layers: [tileLayer["BaseLayer"], baseGroup, groupCruzcampo, groupMahou], //ch
+    layers: [
+      tileLayer["BaseLayer"],
+      baseGroup,
+      groupCruzcampo,
+      groupMahou,
+      groupEsparte,
+    ], //ch
   });
 
   var overlayMaps = {
@@ -107,15 +121,6 @@ $.get(file, function (csvString) {
   //   }
   // );
   // controlLayers.addBaseLayer(Stamen_Watercolor, "Stamen_Watercolor");
-
-  var Esri_WorldStreetMap = L.tileLayer(
-    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
-    {
-      attribution:
-        "Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012",
-    }
-  );
-  controlLayers.addBaseLayer(Esri_WorldStreetMap, "Esri_WorldStreetMap");
 
   var Stadia_AlidadeSmoothDark = L.tileLayer(
     "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
