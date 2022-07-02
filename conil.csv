@@ -2,16 +2,16 @@ Bar,lat,lon,state,state_distric,place,postcode,contact,cervezas
 Merendero de la Atalaya,36.2789466,-6.0946350,Andalucía,-,Conil de la Frontera,11140,-,"{"Mahou": 3.25, "Alhambra": 3.10}"
 Jacaranda,36.2738824,-6.0877399,Andalucía,-,Conil de la Frontera,11140,-,-
 La Solera - Abacería,36.2754244,-6.0895324,Andalucía,-,Conil de la Frontera,11140,-,-
-El Castillito,36.2746097,-6.0889440,Andalucía,-,Conil de la Frontera,11140,-,-
+El Castillito,36.2746097,-6.0889440,Andalucía,-,Conil de la Frontera,11140,-,"{"Cruzcampo": "-"}"
 Tio Luis,36.3256204,-6.1589531,Andalucía,-,Conil de la Frontera,11400,-,-
 Chiringuito Roche,36.3181291,-6.1556379,Andalucía,-,Conil de la Frontera,11400,-,-
-Cervecería Esparte,36.2798469,-6.0860095,Andalucía,-,Conil de la Frontera,11140,-,-
+Cervecería Esparte,36.2798469,-6.0860095,Andalucía,-,Conil de la Frontera,11140,-,"{"Esparte": "-"}"
 José Rayo,36.2761970,-6.0875946,Andalucía,-,Conil de la Frontera,11140,-,-
-El Rest0bar,36.2742171,-6.0904185,Andalucía,-,Conil de la Frontera,11140,-,-
-El Curro Jimenez,36.2796683,-6.0977315,Andalucía,-,Conil de la Frontera,11140,-,-
-Bar Marsalao,36.2759020,-6.0923486,Andalucía,-,Conil de la Frontera,11140,-,-
-Pizza El Argentino,36.2778410,-6.0881991,Andalucía,-,Conil de la Frontera,11140,-,-
-Bar Pedro,36.2775230,-6.0926604,Andalucía,-,Conil de la Frontera,11140,-,-
+El Rest0bar,36.2742171,-6.0904185,Andalucía,-,Conil de la Frontera,11140,-,"{"Cruzcampo": "-"}"
+El Curro Jimenez,36.2796683,-6.0977315,Andalucía,-,Conil de la Frontera,11140,-,.
+Bar Marsalao,36.2759020,-6.0923486,Andalucía,-,Conil de la Frontera,11140,-,.
+Pizza El Argentino,36.2778410,-6.0881991,Andalucía,-,Conil de la Frontera,11140,-,"{"Cruzcampo": 2.50, "Amstel": 2.50, "Estrella Galicia": 3.00}"
+Bar Pedro,36.2775230,-6.0926604,Andalucía,-,Conil de la Frontera,11140,-,.
 La Barra de la Villa,36.2755073,-6.0881491,Andalucía,-,Conil de la Frontera,11140,-,-
 Cerveceria 3 Hermanos,36.2795853,-6.0891901,Andalucía,-,Conil de la Frontera,11140,-,-
 La Plaza,36.2790645,-6.0889705,Andalucía,-,Conil de la Frontera,11140,-,-

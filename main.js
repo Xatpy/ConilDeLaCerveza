@@ -1,8 +1,7 @@
-console.log("start");
-
 var allMarkers = [];
-var markersA = [];
-var markersB = [];
+var markersCruzcampo = [];
+var markersMahou = [];
+var markersEsparte = [];
 
 const file = "conil.csv";
 $.get(file, function (csvString) {
@@ -15,24 +14,30 @@ $.get(file, function (csvString) {
     var row = data[i];
     if (row.lat && row.lon) {
       const popupHtml = getPopupHtml(row);
-      const hasBeerData = popupHtml.includes("<li>");
-      var myIcon = L.divIcon({
-        className: hasBeerData ? "my-div-icon-beer" : "my-div-icon-question",
-        html: hasBeerData ? "🍺" : "📍",
-      });
+      if (popupHtml) {
+        const hasBeerData = popupHtml.includes("<li>");
+        var myIcon = L.divIcon({
+          className: hasBeerData ? "my-div-icon-beer" : "my-div-icon-question",
+          html: hasBeerData ? "🍺" : "📍",
+        });
 
-      var marker = L.marker([row.lat, row.lon], {
-        icon: myIcon,
-      }).bindPopup(popupHtml);
+        var marker = L.marker([row.lat, row.lon], {
+          icon: myIcon,
+        }).bindPopup(popupHtml);
 
-      if (hasBeerData) {
-        if (popupHtml.includes("Cruzcampo")) {
-          markersA.push(marker);
+        if (hasBeerData) {
+          if (popupHtml.includes("Cruzcampo")) {
+            markersCruzcampo.push(marker);
+          }
+          if (popupHtml.includes("Mahou")) {
+            markersMahou.push(marker);
+          }
+          if (popupHtml.includes("Esparte")) {
+            markersEsparte.push(marker);
+          }
         } else {
-          markersB.push(marker);
+          allMarkers.push(marker);
         }
-      } else {
-        allMarkers.push(marker);
       }
 
       marker.on("mouseover", function (e) {
@@ -49,8 +54,9 @@ $.get(file, function (csvString) {
   }
 
   let baseGroup = L.layerGroup(allMarkers);
-  let groupA = L.layerGroup(markersA);
-  let groupB = L.layerGroup(markersB);
+  let groupCruzcampo = L.layerGroup(markersCruzcampo);
+  let groupMahou = L.layerGroup(markersMahou);
+  let groupEsparte = L.layerGroup(markersEsparte);
 
   //map.addLayer(markers);
 
@@ -70,12 +76,13 @@ $.get(file, function (csvString) {
     minZoom: 11,
     scrollWheelZoom: true,
     tap: false,
-    layers: [tileLayer["BaseLayer"], baseGroup, groupA, groupB], //ch
+    layers: [tileLayer["BaseLayer"], baseGroup, groupCruzcampo, groupMahou], //ch
   });
 
   var overlayMaps = {
-    Mahou: groupA,
-    Cruzcampo: groupB,
+    Mahou: groupCruzcampo,
+    Cruzcampo: groupMahou,
+    Esparte: groupEsparte,
     "?": baseGroup,
   };
 
@@ -135,16 +142,21 @@ $.get(file, function (csvString) {
 
   function getPopupHtml(row) {
     let popupHtml = `<h3 style="text-align: center">${row.Bar}</h3>`;
-    if (row.cervezas && row.cervezas !== "-") {
-      try {
-        popupHtml += "<ul>";
-        const listCervezas = JSON.parse(row.cervezas);
-        for (cerv in listCervezas) {
-          popupHtml += `<li>${cerv}: ${listCervezas[cerv]} €</li>`;
+    if (row.cervezas) {
+      const cervezas = row.cervezas;
+      if (cervezas === ".") {
+        return null;
+      } else if (cervezas !== "-") {
+        try {
+          popupHtml += "<ul>";
+          const listCervezas = JSON.parse(row.cervezas);
+          for (cerv in listCervezas) {
+            popupHtml += `<li>${cerv}: ${listCervezas[cerv]} €</li>`;
+          }
+          popupHtml += "</ul>";
+        } catch {
+          console.error(`Error parsing ${row.Bar} with field: ${row.cervezas}`);
         }
-        popupHtml += "</ul>";
-      } catch {
-        console.error(`Error parsing ${row.Bar} with field: ${row.cervezas}`);
       }
     }
     return popupHtml;

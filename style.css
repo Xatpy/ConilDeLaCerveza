@@ -4,12 +4,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: myFirstFont;
-}
-
-@font-face {
-  font-family: myFirstFont;
-  src: url("./beer.ttf");
+  font-family: beerFont;
 }
 
 html,
@@ -108,10 +103,16 @@ h2 {
   }
 
   h2 {
-    font-size: medium;
+    font-size: small;
   }
 
-  .containermap {
+  .containerMap {
     height: 60%;
+    margin: 5px;
+  }
+
+  .endText {
+    margin-top: 3px;
+    font-size: smaller;
   }
 }
