@@ -1,0 +1,117 @@
+html {
+  background: url(./bg_beer_2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: myFirstFont;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url("./beer.ttf");
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  min-height: 100%;
+  height: 100%;
+}
+
+header {
+  height: 10%;
+}
+
+h1 {
+  height: 10%;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: xxx-large;
+  text-shadow: 0px 0px 20px #f3d158;
+  text-shadow: #f3d158 0px 0px 2px, #f3d158 0px 0px 2px, #f3d158 0px 0px 2px,
+    #f3d158 0px 0px 2px, #f3d158 0px 0px 2px, #f3d158 0px 0px 2px;
+}
+
+h2 {
+  font-size: large;
+}
+
+.divMap {
+  height: 100%;
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.introText {
+  /* height: 7%; */
+  text-align: center;
+}
+
+.endText {
+  /* height: 7%; */
+  margin-top: 15px;
+  text-align: center;
+}
+
+.containerMap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 70%;
+  margin: 20px;
+}
+
+.innerDivMap {
+  width: 100ch;
+  height: 100%;
+  border-radius: 25px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+#map {
+  height: 100%;
+  border-radius: 25px;
+}
+
+.my-div-icon-beer {
+  font-size: xx-large;
+}
+
+.my-div-icon-question {
+  font-size: x-large;
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: x-large;
+    color: red;
+  }
+
+  h2 {
+    font-size: medium;
+  }
+
+  .containermap {
+    height: 60%;
+  }
+}

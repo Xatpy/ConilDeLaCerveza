@@ -28,6 +28,8 @@
       href="https://unpkg.com/leaflet.markercluster@1.1.0/dist/MarkerCluster.Default.css"
     />
 
+    <link rel="stylesheet" href="./style.css" />
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script src="https://unpkg.com/leaflet.markercluster@1.1.0/dist/leaflet.markercluster.js"></script>
@@ -49,83 +51,6 @@
 
       gtag("config", "G-ZRVZ6N8XG8");
     </script>
-
-    <style>
-      html {
-        background: url(./bg_beer_2.jpg) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-
-      body {
-        margin: 0;
-        padding: 0;
-        text-align: center;
-      }
-
-      .container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
-        height: 100%;
-      }
-
-      h1 {
-        height: 10%;
-        text-align: center;
-      }
-
-      .divMap {
-        height: 100%;
-
-        justify-content: center;
-        align-items: center;
-      }
-
-      .introText {
-        height: 7%;
-        text-align: center;
-      }
-
-      .endText {
-        height: 7%;
-        margin-top: 15px;
-      }
-
-      .div2 {
-        height: 70%;
-        border-radius: 25px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: black;
-      }
-
-      #map {
-        /* position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0; */
-        height: 100%;
-        border-radius: 25px;
-      }
-
-      .my-div-icon-beer {
-        font-size: xx-large;
-      }
-
-      .my-div-icon-question {
-        font-size: x-large;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
@@ -133,22 +58,32 @@
         <h1>Conil de la Cerveza</h1>
       </header>
       <section class="introText">
-        Descubre los bares en Conil que tienen tu cerveza favorita
+        <h2>
+          Descubre los bares en Conil de la Frontera que tienen tu cerveza
+          favorita
+        </h2>
       </section>
-      <div class="div2">
-        <div class="divMap">
-          <div id="map"></div>
+
+      <div class="containerMap">
+        <div class="innerDivMap">
+          <div class="divMap">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
+
       <section class="endText">
-        ¿Quieres que tu bar aparezca en ConilDeLaCerveza.es? Contacta con
-        nosotros por <a href="mailto: info@conildelacerveza.es">e-mail</a> o por
-        <a
-          href="https://www.instagram.com/conil.de.la.cerveza/"
-          target="blank"
-          rel="noopener noreferrer"
-          >Instagram</a
-        >.
+        <p>
+          ¿Quieres que tu bar aparezca en ConilDeLaCerveza.es? Contacta con
+          nosotros por <a href="mailto: info@conildelacerveza.es">e-mail</a> o
+          por
+          <a
+            href="https://www.instagram.com/conil.de.la.cerveza/"
+            target="blank"
+            rel="noopener noreferrer"
+            >Instagram</a
+          >.
+        </p>
       </section>
     </div>
 

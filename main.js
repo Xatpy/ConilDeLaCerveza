@@ -65,7 +65,7 @@ $.get(file, function (csvString) {
   var tileLayer = { BaseLayer: OpenStreetMap_Mapnik_tileLayer };
 
   var map = L.map("map", {
-    center: [36.2779, -6.0882],
+    center: [36.3, -6.1],
     zoom: 13, // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
     minZoom: 11,
     scrollWheelZoom: true,
@@ -81,26 +81,34 @@ $.get(file, function (csvString) {
 
   var controlLayers = L.control
     .layers(tileLayer, overlayMaps, {
-      position: "bottomright",
-      collapsed: false,
+      position: "topright",
+      collapsed: true,
     })
     .addTo(map);
-
   //.addTo(map);
   //controlLayers.addBaseLayer(OpenStreetMap_Mapnik, "OpenStreetMap_Mapnik");
 
-  var Stamen_Watercolor = L.tileLayer(
-    "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
+  // var Stamen_Watercolor = L.tileLayer(
+  //   "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
+  //   {
+  //     attribution:
+  //       'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  //     subdomains: "abcd",
+  //     minZoom: 1,
+  //     maxZoom: 16,
+  //     ext: "jpg",
+  //   }
+  // );
+  // controlLayers.addBaseLayer(Stamen_Watercolor, "Stamen_Watercolor");
+
+  var Esri_WorldStreetMap = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
     {
       attribution:
-        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      subdomains: "abcd",
-      minZoom: 1,
-      maxZoom: 16,
-      ext: "jpg",
+        "Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012",
     }
   );
-  controlLayers.addBaseLayer(Stamen_Watercolor, "Stamen_Watercolor");
+  controlLayers.addBaseLayer(Esri_WorldStreetMap, "Esri_WorldStreetMap");
 
   var Stadia_AlidadeSmoothDark = L.tileLayer(
     "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
@@ -114,6 +122,16 @@ $.get(file, function (csvString) {
     Stadia_AlidadeSmoothDark,
     "Stadia_AlidadeSmoothDark"
   );
+
+  var Stadia_AlidadeSmooth = L.tileLayer(
+    "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+    {
+      maxZoom: 20,
+      attribution:
+        '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    }
+  );
+  controlLayers.addBaseLayer(Stadia_AlidadeSmooth, "Stadia_AlidadeSmooth");
 
   function getPopupHtml(row) {
     let popupHtml = `<h3 style="text-align: center">${row.Bar}</h3>`;
