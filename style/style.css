@@ -1,6 +1,15 @@
-@font-face {
+/* @font-face {
   font-family: beerFont;
   src: url("./font.woff2") format("woff2");
+} */
+
+@font-face {
+  font-family: "beerregular";
+  src: url("./font-webfont.woff2") format("woff2"),
+    url("./font-webfont.woff") format("woff"),
+    url("font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 html {
@@ -9,7 +18,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: beerFont;
+  font-family: "beerregular";
 }
 
 html,
@@ -32,13 +41,17 @@ li {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  justify-content: center;
+  /* justify-content: center; */
   min-height: 100%;
   height: 100%;
 }
 
 header {
   height: 10%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
 }
 
 h1 {
@@ -109,7 +122,8 @@ h2 {
 @media (max-width: 700px) {
   h1 {
     font-size: x-large;
-    color: red;
+    /* letter-spacing: 1px; */
+    /* color: red; */
   }
 
   h2 {
@@ -117,7 +131,7 @@ h2 {
   }
 
   .containerMap {
-    height: 60%;
+    /* height: 70%; */
     margin: 5px;
   }
 
