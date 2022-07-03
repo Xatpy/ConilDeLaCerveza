@@ -2,6 +2,7 @@ var allMarkers = [];
 var markersCruzcampo = [];
 var markersMahou = [];
 var markersEsparte = [];
+var markersAguila = [];
 
 const file = "./data/conil.csv";
 $.get(file, function (csvString) {
@@ -35,18 +36,23 @@ $.get(file, function (csvString) {
           if (popupHtml.includes("Esparte")) {
             markersEsparte.push(marker);
           }
+          if (popupHtml.includes("Aguila")) {
+            markersAguila.push(marker);
+          }
         } else {
           allMarkers.push(marker);
         }
       }
 
-      marker.on("mouseover", function (e) {
-        this.openPopup();
-      });
-      marker.on("mouseout", function (e) {
-        this.closePopup();
-      });
-      //}).bindPopup(row.Bar);
+      const enableDesktopMouseEvents = false;
+      if (enableDesktopMouseEvents) {
+        marker.on("mouseover", function (e) {
+          this.openPopup();
+        });
+        marker.on("mouseout", function (e) {
+          this.closePopup();
+        });
+      }
 
       //markers.addLayer(marker);
       //map.addLayer(marker);
@@ -57,6 +63,7 @@ $.get(file, function (csvString) {
   let groupCruzcampo = L.layerGroup(markersCruzcampo);
   let groupMahou = L.layerGroup(markersMahou);
   let groupEsparte = L.layerGroup(markersEsparte);
+  let groupAguila = L.layerGroup(markersAguila);
 
   // var OpenStreetMap_Mapnik_tileLayer = L.tileLayer(
   //   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -90,6 +97,7 @@ $.get(file, function (csvString) {
       groupCruzcampo,
       groupMahou,
       groupEsparte,
+      groupAguila,
     ], //ch
   });
 
@@ -97,6 +105,7 @@ $.get(file, function (csvString) {
     Mahou: groupCruzcampo,
     Cruzcampo: groupMahou,
     Esparte: groupEsparte,
+    Aguila: groupAguila,
     "?": baseGroup,
   };
 
