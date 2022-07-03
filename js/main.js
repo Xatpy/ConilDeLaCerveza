@@ -3,7 +3,7 @@ var markersCruzcampo = [];
 var markersMahou = [];
 var markersEsparte = [];
 
-const file = "conil.csv";
+const file = "./data/conil.csv";
 $.get(file, function (csvString) {
   var data = Papa.parse(csvString, {
     header: true,

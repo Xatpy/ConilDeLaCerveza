@@ -1,3 +1,8 @@
+@font-face {
+  font-family: beerFont;
+  src: url("./style/font.ttf") format("truetype");
+}
+
 html {
   background: url(./bg_beer_2.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
