@@ -87,6 +87,15 @@ h2 {
   text-align: center;
 }
 
+.divFilters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
 .containerMap {
   display: flex;
   flex-direction: row;

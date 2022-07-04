@@ -81,6 +81,46 @@
         </h2>
       </section>
 
+      <section>
+        <div class="containerMap">
+          <fieldset class="divFilters" onchange="updateFilters()">
+            <legend>Filtros</legend>
+            <input
+              checked="true"
+              id="filterCruzcampo"
+              type="checkbox"
+              value="Cruzcampo"
+            />Cruzcampo<br />
+            <input
+              checked="true"
+              id="filterMahou"
+              type="checkbox"
+              name="favorite_pet"
+              value="Mahou"
+            />Mahou<br />
+            <input
+              checked="true"
+              id="filterEstrellaGalicia"
+              type="checkbox"
+              name="favorite_pet"
+              value="Estrella Galicia"
+            /><span>Estrella Galicia</span>
+            <input
+              checked="true"
+              id="filterEsparte"
+              type="checkbox"
+              name="favorite_pet"
+              value="Estrella Galicia"
+            /><span>Esparte</span>
+            <input
+              id="filterUnknown"
+              type="checkbox"
+              value="unknownBeer"
+            /><span>?</span>
+          </fieldset>
+        </div>
+      </section>
+
       <div class="containerMap">
         <div class="innerDivMap">
           <div class="divMap">
