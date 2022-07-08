@@ -94,6 +94,7 @@ h2 {
   flex-direction: row;
   align-content: center;
   align-items: center;
+  width: 100ch;
 }
 
 .containerMap {
@@ -126,6 +127,11 @@ h2 {
 
 .my-div-icon-question {
   font-size: x-large;
+}
+
+.filterBrand {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 @media (max-width: 700px) {
