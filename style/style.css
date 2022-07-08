@@ -147,11 +147,20 @@ h2 {
 
   .containerMap {
     /* height: 70%; */
-    margin: 5px;
+    margin: 3px;
   }
 
   .endText {
     margin-top: 3px;
     font-size: smaller;
+  }
+
+  .divFilters {
+    font-size: xx-small;
+  }
+
+  .filterBrand {
+    margin-left: 1px;
+    margin-right: 1px;
   }
 }
