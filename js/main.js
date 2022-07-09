@@ -7,41 +7,7 @@ let listBeers = [];
 
 let filtersElem = {};
 
-const createUtilitySelectionDiv = () => {
-  debugger;
-  const divSelectAll = document.createElement("div");
-  divSelectAll.classList.add("filterBrand2222");
-  const inputElement = document.createElement("input");
-  inputElement.id = "selectAll";
-  inputElement.type = "checkbox";
-  //filtersElem[beer] = inputElement;
-
-  const labelElement = document.createElement("label");
-  labelElement.setAttribute("for", "selectAll");
-  labelElement.innerHTML = "Seleccionar todos";
-
-  divSelectAll.appendChild(inputElement);
-  divSelectAll.appendChild(labelElement);
-
-  const divUnselectAll = document.createElement("div");
-  divUnselectAll.classList.add("filterBrand2222");
-  const inputUnselectElement = document.createElement("input");
-  inputUnselectElement.id = "unselectAll";
-  inputUnselectElement.type = "checkbox";
-  //filtersElem[beer] = inputUnselectElement;
-
-  const labelUnselect = document.createElement("label");
-  labelUnselect.setAttribute("for", "selectAll");
-  labelUnselect.innerHTML = "Eliminar seleccion";
-
-  divUnselectAll.appendChild(inputUnselectElement);
-  divUnselectAll.appendChild(labelUnselect);
-
-  const divUtility = document.createElement("div");
-  divUtility.classList.add("filterBrand2222");
-  divUtility.appendChild(divSelectAll);
-  divUtility.appendChild(divUnselectAll);
-};
+const ALL = "TODAS❗️";
 
 const createFilterDiv = (beer, customLabel = "") => {
   const div = document.createElement("div");
@@ -49,8 +15,11 @@ const createFilterDiv = (beer, customLabel = "") => {
 
   const inputElement = document.createElement("input");
   inputElement.id = beer;
-  inputElement.type = "checkbox";
-  inputElement.checked = !customLabel;
+  inputElement.type = "radio";
+  inputElement.name = "radioButtonSelection";
+  if (beer === ALL) {
+    inputElement.checked = true;
+  }
   filtersElem[beer] = inputElement;
 
   const labelElement = document.createElement("label");
@@ -68,8 +37,6 @@ const createDynamicFiltersFieldSet = (listBeers) => {
     anchorElement.appendChild(createFilterDiv(beer));
   }
   anchorElement.appendChild(createFilterDiv("Unknown", "❓"));
-
-  //anchorElement.append(createUtilitySelectionDiv());
 };
 
 const isValidCervezasRow = (field) => {
@@ -91,7 +58,12 @@ const getListOfDifferentBeers = (data) => {
       }
     }
   }
-  return listBeers;
+  listBeers.sort();
+
+  let sortedBeers = [];
+  sortedBeers.push(ALL);
+  sortedBeers.push(...listBeers);
+  return sortedBeers;
 };
 
 const file = "./data/conil.csv";
@@ -106,7 +78,6 @@ const response = fetch(file)
     dataCsv = data;
 
     listBeers = getListOfDifferentBeers(data);
-    listBeers.sort();
     createDynamicFiltersFieldSet(listBeers);
 
     updateMap(dataCsv);
@@ -116,6 +87,7 @@ const response = fetch(file)
 const updateMap = (data) => {
   filtersElem[beer];
 
+  const isAllBeersFilterEnabled = filtersElem[ALL].checked;
   for (var i in data) {
     var row = data[i];
     if (row.lat && row.lon) {
@@ -133,15 +105,19 @@ const updateMap = (data) => {
           icon: myIcon,
         }).bindPopup(popupHtml);
 
-        if (hasBeerData) {
-          for (beer of listBeers) {
-            const isFilterEnabled = filtersElem[beer].checked;
-            if (isFilterEnabled && popupHtml.includes(beer)) {
-              shouldAddToMap = true;
-            }
-          }
+        if (isAllBeersFilterEnabled) {
+          shouldAddToMap = true;
         } else {
-          shouldAddToMap = filtersElem["Unknown"].checked;
+          if (hasBeerData) {
+            for (beer of listBeers) {
+              const isFilterEnabled = filtersElem[beer].checked;
+              if (isFilterEnabled && popupHtml.includes(beer)) {
+                shouldAddToMap = true;
+              }
+            }
+          } else {
+            shouldAddToMap = filtersElem["Unknown"].checked;
+          }
         }
 
         if (shouldAddToMap) {

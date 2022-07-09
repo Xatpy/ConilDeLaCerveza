@@ -66,6 +66,7 @@ h1 {
 
 h2 {
   font-size: large;
+  color: #000000aa;
 }
 
 .divMap {
@@ -95,6 +96,14 @@ h2 {
   align-content: center;
   align-items: center;
   width: 100ch;
+}
+
+.containerFilters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .containerMap {
@@ -145,6 +154,10 @@ h2 {
     font-size: small;
   }
 
+  .introText {
+    height: 5%;
+  }
+
   .containerMap {
     /* height: 70%; */
     margin: 3px;
@@ -162,5 +175,9 @@ h2 {
   .filterBrand {
     margin-left: 1px;
     margin-right: 1px;
+  }
+
+  .leaflet-control-attribution {
+    font-size: 5px !important;
   }
 }
