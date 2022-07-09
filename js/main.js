@@ -48,7 +48,10 @@ const createFilterDiv = (beer, customLabel = "") => {
   let imgLogo = null;
   if (addLogo) {
     imgLogo = document.createElement("img");
-    imgLogo.setAttribute("src", `./images/${beer}.png`);
+    imgLogo.setAttribute(
+      "src",
+      `https://raw.githubusercontent.com/Xatpy/ConilDeLaCerveza/main/images/${beer}.png`
+    );
     imgLogo.className = "beerLogoImg";
   }
 
