@@ -120,7 +120,6 @@ h2 {
 .innerDivMap {
   width: 100ch;
   height: 100%;
-  border-radius: 25px;
   border-width: 1px;
   border-style: solid;
   border-color: black;
@@ -128,7 +127,6 @@ h2 {
 
 #map {
   height: 100%;
-  border-radius: 25px;
 }
 
 .my-div-icon-beer {
